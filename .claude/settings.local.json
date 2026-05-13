@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m 'Implement Intel Report gallery for food spots *)",
+      "Bash(git commit -m 'Implement final polish, mobile optimization, and Supreme Decree banner. *)"
+    ]
+  }
+}

@@ -32,7 +32,7 @@ export default function LandingPage() {
         className={`relative min-h-screen transition-colors duration-1000 ${isCleared ? 'bg-stone-100' : 'bg-stone-900'}`}
       >
         {/* Top Secret Header */}
-        <div className="max-w-4xl mx-auto px-6 py-12 md:py-24 flex flex-col items-center text-center">
+        <div className="max-w-4xl mx-auto px-4 py-12 md:py-24 flex flex-col items-center text-center">
           <motion.div
             initial={{ scale: 0.9 }}
             animate={isCleared ? { scale: 1 } : {}}

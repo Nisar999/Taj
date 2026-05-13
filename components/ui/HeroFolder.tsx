@@ -30,22 +30,22 @@ export const HeroFolder: React.FC<HeroFolderProps> = ({ onOpen }) => {
           >
             <div className="absolute -inset-4 bg-amber-500/20 rounded-xl blur-xl group-hover:bg-amber-500/40 transition-all duration-500" />
 
-            <div className="relative p-8 bg-amber-700 border-4 border-amber-900 rounded-lg shadow-2xl transform transition-transform group-hover:scale-105 group-hover:-rotate-1">
+            <div className="relative p-6 md:p-8 bg-amber-700 border-4 border-amber-900 rounded-lg shadow-2xl transform transition-transform group-hover:scale-105 group-hover:-rotate-1">
               <Folder
                 size={120}
-                className="text-amber-100 drop-shadow-lg"
+                className="text-amber-100 drop-shadow-lg w-20 h-20 md:w-[120px] md:h-[120px]"
                 strokeWidth={1.5}
               />
-              <div className="absolute top-4 right-4">
-                <div className="bg-red-600 text-white text-[10px] font-black px-2 py-1 rounded uppercase tracking-tighter rotate-12 border border-red-800 shadow-sm">
+              <div className="absolute top-2 right-2 md:top-4 md:right-4">
+                <div className="bg-red-600 text-white text-[8px] md:text-[10px] font-black px-2 py-1 rounded uppercase tracking-tighter rotate-12 border border-red-800 shadow-sm">
                   Classified
                 </div>
-              </div}
+              </div>
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                <span className="text-stone-400 font-mono text-sm tracking-widest uppercase">
+                <span className="text-stone-400 font-mono text-xs md:text-sm tracking-widest uppercase">
                   Taj United Club Archive
                 </span>
-              </div}
+              </div>
             </div>
           </motion.div>
         ) : null}
