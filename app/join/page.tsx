@@ -43,6 +43,11 @@ export default function JoinPage() {
   });
   const [currentPalateQuestion, setCurrentPalateQuestion] = useState(0);
   const [isStamping, setIsStamping] = useState(false);
+  const [caseFile, setCaseFile] = useState<number | null>(null);
+
+  React.useEffect(() => {
+    setCaseFile(Math.floor(Math.random() * 1000000));
+  }, []);
 
   const handleNextIdentity = () => {
     if (formData.name && formData.email) {
@@ -215,7 +220,7 @@ export default function JoinPage() {
                 Your application has been uploaded to the Eternal Archive. Do not contact us. We will contact you if you are deemed worthy.
               </p>
               <div className="text-xs bg-zinc-800 px-3 py-1 rounded text-zinc-400">
-                Case File: #{Math.floor(Math.random() * 1000000)}
+                Case File: #{caseFile !== null ? caseFile : "..."}
               </div>
             </motion.div>
           )}
