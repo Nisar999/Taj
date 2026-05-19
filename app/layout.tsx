@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { ClearanceProvider } from './context/ClearanceContext'
 
 export const metadata: Metadata = {
   title: 'The Taj United Club',
@@ -27,8 +28,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-background">
-      <body>{children}</body>
+    <html lang="en" className="bg-charcoal">
+      <body>
+        <ClearanceProvider>
+          {children}
+        </ClearanceProvider>
+      </body>
     </html>
   )
 }
