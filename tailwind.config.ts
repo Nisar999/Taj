@@ -1,0 +1,25 @@
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: '#000F08',
+        foreground: '#EBEBDF',
+        primary: '#FB3640',
+        'primary-dark': '#9A0002',
+        accent: '#EFE6DE',
+      },
+      fontFamily: {
+        sans: ['system-ui', 'sans-serif'],
+        serif: ['Georgia', 'serif'],
+      },
+    },
+  },
+  plugins: [],
+}
+export default config
