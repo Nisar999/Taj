@@ -25,8 +25,8 @@ const config: Config = {
         accent: '#EFE6DE',
       },
       fontFamily: {
-        sans: ['system-ui', 'sans-serif'],
-        serif: ['Georgia', 'serif'],
+        sans: ['var(--font-berthold)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-recoletta)', 'Georgia', 'serif'],
         mono: ['Courier New', 'monospace'],
       },
       animation: {

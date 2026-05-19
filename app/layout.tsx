@@ -1,6 +1,19 @@
 import type { Metadata } from 'next'
+import { Playfair_Display, Raleway } from 'next/font/google'
 import './globals.css'
 import { ClearanceProvider } from './context/ClearanceContext'
+
+const playfairDisplay = Playfair_Display({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-recoletta',
+})
+
+const raleway = Raleway({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-berthold',
+})
 
 export const metadata: Metadata = {
   title: 'The Taj United Club',
@@ -28,8 +41,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-charcoal">
-      <body>
+    <html lang="en" className={`bg-charcoal ${playfairDisplay.variable} ${raleway.variable}`}>
+      <body className="font-sans">
         <ClearanceProvider>
           {children}
         </ClearanceProvider>

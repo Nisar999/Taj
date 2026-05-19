@@ -54,7 +54,7 @@ export function HeroFolder() {
             transition={{ duration: 0.8, delay: 0.4 }}
           />
           <p className="text-lg md:text-xl text-saffron-light font-serif italic mb-8">
-            Est. 1947 | A Legacy of Excellence
+            Est. 2025 | A Legacy of Excellence
           </p>
         </motion.div>
 
