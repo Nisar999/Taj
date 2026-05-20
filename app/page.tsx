@@ -1,13 +1,24 @@
-import { HeroFolder } from '@/components/HeroFolder'
-import { ClearanceSelector } from '@/components/ClearanceSelector'
-import Navigation from '@/components/Navigation'
+'use client'
+
+import { useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
+import { BriefcaseLanding } from '@/components/BriefcaseLanding'
+import { HomePage } from '@/components/HomePage'
 
 export default function Home() {
+  const [isArchiveOpened, setIsArchiveOpened] = useState(false)
+
+  const handleOpenArchive = () => {
+    setIsArchiveOpened(true)
+  }
+
   return (
-    <>
-      <Navigation />
-      <HeroFolder />
-      <ClearanceSelector />
-    </>
+    <AnimatePresence mode="wait">
+      {!isArchiveOpened ? (
+        <BriefcaseLanding key="briefcase" onOpen={handleOpenArchive} />
+      ) : (
+        <HomePage key="home" />
+      )}
+    </AnimatePresence>
   )
 }
