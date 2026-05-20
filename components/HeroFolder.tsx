@@ -3,22 +3,31 @@
 import { motion } from 'framer-motion';
 import { Folder } from 'lucide-react';
 import Link from 'next/link';
+import { CornerLiquidMetal } from './CornerLiquidMetal';
+import { AnimatedPageWrapper, StaggerContainer, StaggerItem } from './AnimatedPageWrapper';
 
 export function HeroFolder() {
   return (
-    <section className="min-h-screen bg-charcoal flex items-center justify-center px-4 py-20 relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10 text-6xl text-saffron font-serif">CLASSIFIED</div>
-        <div className="absolute bottom-10 right-10 text-6xl text-saffron font-serif">CLASSIFIED</div>
-      </div>
+    <AnimatedPageWrapper variant="slide-up">
+      <section className="min-h-screen bg-charcoal flex items-center justify-center px-4 py-20 relative overflow-hidden">
+        {/* Corner Liquid Metal Effects */}
+        <CornerLiquidMetal position="top-left" size="large" />
+        <CornerLiquidMetal position="top-right" size="large" />
+        <CornerLiquidMetal position="bottom-left" size="large" />
+        <CornerLiquidMetal position="bottom-right" size="large" />
 
-      <motion.div
-        className="relative z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-10 left-10 text-6xl text-saffron font-serif">CLASSIFIED</div>
+          <div className="absolute bottom-10 right-10 text-6xl text-saffron font-serif">CLASSIFIED</div>
+        </div>
+
+        <motion.div
+          className="relative z-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
         {/* Folder Icon - 3D rotation effect */}
         <motion.div
           className="mb-8 flex justify-center"
@@ -103,7 +112,8 @@ export function HeroFolder() {
         >
           <div className="text-sm tracking-widest">★ OFFICIAL DOCUMENT ★</div>
         </motion.div>
-      </motion.div>
-    </section>
+        </motion.div>
+      </section>
+    </AnimatedPageWrapper>
   );
 }

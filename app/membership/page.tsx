@@ -6,52 +6,66 @@ import { useClearance } from '@/app/context/ClearanceContext';
 import Navigation from '@/components/Navigation';
 import { motion } from 'framer-motion';
 import { Check, Star } from 'lucide-react';
+import { CornerLiquidMetal } from '@/components/CornerLiquidMetal';
+import { AnimatedPageWrapper, StaggerContainer, StaggerItem } from '@/components/AnimatedPageWrapper';
 
 export default function MembershipPage() {
   const { clearance, setClearance } = useClearance();
 
   return (
-    <>
-      <Navigation />
-      <div className="pt-20 pb-12">
-        {/* Header Section */}
-        <div className="bg-charcoal border-b-4 border-chili-red py-12 px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-cream mb-3">
-            MEMBERSHIP PLANS
-          </h1>
-          <p className="text-saffron font-serif italic max-w-2xl mx-auto">
-            Choose your level of access to The Taj United Club
-          </p>
-          <div className="mt-4 h-1 w-24 bg-chili-red mx-auto" />
-        </div>
+    <AnimatedPageWrapper variant="fade-scale">
+      <>
+        <Navigation />
+        <CornerLiquidMetal position="top-left" size="medium" />
+        <CornerLiquidMetal position="top-right" size="medium" />
+        <CornerLiquidMetal position="bottom-left" size="medium" />
+        <CornerLiquidMetal position="bottom-right" size="medium" />
+        
+        <div className="pt-20 pb-12">
+          {/* Header Section */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-charcoal border-b-4 border-chili-red py-12 px-4 text-center"
+          >
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-cream mb-3">
+              MEMBERSHIP PLANS
+            </h1>
+            <p className="text-saffron font-serif italic max-w-2xl mx-auto">
+              Choose your level of access to The Taj United Club
+            </p>
+            <div className="mt-4 h-1 w-24 bg-chili-red mx-auto" />
+          </motion.div>
 
-        {/* Plans Grid */}
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {membershipPlans.map((plan, index) => {
-              const isPopular = plan.name === 'Premium Membership';
-              const clearanceLevels = { GUEST: 0, MEMBER: 1, DIVINE: 2 };
-              const userLevel = clearanceLevels[clearance];
-              const planLevel = clearanceLevels[plan.clearanceLevel];
-              const hasUnlocked = userLevel >= planLevel;
+          {/* Plans Grid */}
+          <div className="max-w-6xl mx-auto px-4 py-12">
+            <StaggerContainer delay={0.2}>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {membershipPlans.map((plan, index) => {
+                  const isPopular = plan.name === 'Premium Membership';
+                  const clearanceLevels = { GUEST: 0, MEMBER: 1, DIVINE: 2 };
+                  const userLevel = clearanceLevels[clearance];
+                  const planLevel = clearanceLevels[plan.clearanceLevel];
+                  const hasUnlocked = userLevel >= planLevel;
 
-              return (
-                <motion.div
-                  key={plan.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`
-                    relative border-4 rounded-lg overflow-hidden font-serif
-                    transition-all duration-300
-                    ${isPopular ? 'md:scale-105 md:shadow-2xl' : ''}
-                    ${
-                      hasUnlocked
-                        ? 'border-charcoal bg-cream'
-                        : 'border-gray-400 bg-gray-100'
-                    }
-                  `}
-                >
+                  return (
+                    <StaggerItem key={plan.id} direction="up">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                        className={`
+                          relative border-4 rounded-lg overflow-hidden font-serif
+                          transition-all duration-300
+                          ${isPopular ? 'md:scale-105 md:shadow-2xl' : ''}
+                          ${
+                            hasUnlocked
+                              ? 'border-charcoal bg-cream'
+                              : 'border-gray-400 bg-gray-100'
+                          }
+                        `}
+                      >
                   {/* Popular badge */}
                   {isPopular && (
                     <motion.div
@@ -124,23 +138,31 @@ export default function MembershipPage() {
                     </motion.button>
                   </div>
 
-                  <div className="absolute bottom-0 right-0 opacity-5 text-6xl">
-                    ★
-                  </div>
-                </motion.div>
-              );
-            })}
+                        <div className="absolute bottom-0 right-0 opacity-5 text-6xl">
+                          ★
+                        </div>
+                      </motion.div>
+                    </StaggerItem>
+                  );
+                })}
+              </div>
+            </StaggerContainer>
           </div>
-        </div>
 
-        {/* Footer note */}
-        <div className="text-center py-8 text-cream-dark font-serif italic text-sm">
-          <p>
-            Contact our membership team to learn more or upgrade your plan.
-          </p>
+          {/* Footer note */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-center py-8 text-cream-dark font-serif italic text-sm"
+          >
+            <p>
+              Contact our membership team to learn more or upgrade your plan.
+            </p>
+          </motion.div>
         </div>
-      </div>
-      <ClearanceSelector />
-    </>
+        <ClearanceSelector />
+      </>
+    </AnimatedPageWrapper>
   );
 }

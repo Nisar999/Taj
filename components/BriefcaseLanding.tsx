@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { Briefcase } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { CornerLiquidMetal } from './CornerLiquidMetal'
+import { AnimatedPageWrapper } from './AnimatedPageWrapper'
 
 interface BriefcaseLandingProps {
   onOpen: () => void
@@ -24,13 +26,20 @@ export function BriefcaseLanding({ onOpen }: BriefcaseLandingProps) {
   }, [onOpen])
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed inset-0 bg-charcoal flex flex-col items-center justify-center overflow-hidden"
-    >
+    <AnimatedPageWrapper variant="fade-scale">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        className="fixed inset-0 bg-charcoal flex flex-col items-center justify-center overflow-hidden"
+      >
+      {/* Corner Liquid Metal Effects */}
+      <CornerLiquidMetal position="top-left" size="large" />
+      <CornerLiquidMetal position="top-right" size="large" />
+      <CornerLiquidMetal position="bottom-left" size="large" />
+      <CornerLiquidMetal position="bottom-right" size="large" />
+
       {/* Red Banner at Top */}
       <div className="absolute top-0 left-0 right-0 bg-red-600 py-3 px-4 overflow-hidden">
         <motion.div
@@ -108,6 +117,7 @@ export function BriefcaseLanding({ onOpen }: BriefcaseLandingProps) {
         <p>CLICK TO OPEN ARCHIVE</p>
         <p className="text-xs mt-1">Press ENTER or SPACE to proceed</p>
       </motion.div>
-    </motion.div>
+      </motion.div>
+    </AnimatedPageWrapper>
   )
 }
